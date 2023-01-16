@@ -14,9 +14,11 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const secret = process.env.SECRET;
+
 app.use(
   session({
-    secret: "our little secret,",
+    secret: secret,
     resave: false,
     saveUninitialized: false,
   })
